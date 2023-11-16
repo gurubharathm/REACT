@@ -1,8 +1,9 @@
 import React from "react";
-
+import Navbar from '../components/navbar';
 const Users = () => {
   return (
-    <h1>Users</h1>
+    <>
+    <Navbar /> <h1>Users</h1> < />
   );
 };
 export default Users;

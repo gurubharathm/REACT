@@ -1,8 +1,9 @@
 import React from "react";
-
+import Navbar from '../components/navbar';
 const Settings = () => {
   return (
-    <h1>Settings</h1>
+    <>
+    <Navbar /> <h1> Settings </h1> < />
   );
 };
 export default Settings;

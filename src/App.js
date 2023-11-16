@@ -18,13 +18,13 @@ function App() {
     </div>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route exact path="/" element={<Login />} />
       <Route index element={<Login />} />
       <Route path="dashboard" element={ <Dashboard />} />
       <Route path="about" element={<About />} />
       <Route path="users" element={<Users />} />
       <Route path="settings" element={<Settings />} />
-      <Route path="*" element={<Dashboard />} />
+      
     </Routes>
   </BrowserRouter> < />
   );
