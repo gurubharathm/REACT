@@ -57,7 +57,23 @@ const UsersPage = () => {
   if (!users) return null;
   return (
     <>
-      <Navbar /> <h1>Users</h1>
+      <Navbar />
+      <h1>Users</h1>
+      
+      <div style={{ width: "100%" }}>
+        <DataGrid
+          rows={users}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 10 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+          checkboxSelection
+        />
+      </div>
+      {/*
       <table style={{ display: "none" }}>
         <tr>
           <th>Name</th>
@@ -76,19 +92,7 @@ const UsersPage = () => {
           </tr>
         ))}
       </table>
-      <div style={{ height: 640, width: "100%" }}>
-        <DataGrid
-          rows={users}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 10 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-          checkboxSelection
-        />
-      </div>
+       */}
     </>
   );
 };

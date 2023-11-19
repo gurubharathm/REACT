@@ -15,33 +15,33 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 
-const styles = theme => ({
+const styles = (theme) => ({
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
-      display: "block"
-    }
+      display: "block",
+    },
   },
   search: {
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25)
+      backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: "auto"
-    }
+      width: "auto",
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -50,61 +50,61 @@ const styles = theme => ({
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   inputRoot: {
-    color: "inherit"
+    color: "inherit",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: 200
-    }
+      width: 200,
+    },
   },
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
-      display: "flex"
-    }
+      display: "flex",
+    },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
-      display: "none"
-    }
-  }
+      display: "none",
+    },
+  },
 });
 
 class ToolbarComponent extends React.Component {
   state = {
     achorEl: false,
-    MobileMoreAnchorEl: false
+    MobileMoreAnchorEl: false,
   };
 
-  handleProfileMenuOpen = event => {
+  handleProfileMenuOpen = (event) => {
     this.setState({
-      achorEl: event.currentTarget
+      achorEl: event.currentTarget,
     });
   };
 
   handleMobileMenuClose = () => {
     this.setState({
-      mobileMoreAnchorEl: null
+      mobileMoreAnchorEl: null,
     });
   };
 
   handleMenuClose = () => {
     this.setState({
       achorEl: null,
-      mobileMoreAnchorEl: null
+      mobileMoreAnchorEl: null,
     });
   };
 
-  handleMobileMenuOpen = event => {
+  handleMobileMenuOpen = (event) => {
     this.setState({
-      mobileMoreAnchorEl: event.currentTarget
+      mobileMoreAnchorEl: event.currentTarget,
     });
   };
 
@@ -184,7 +184,7 @@ class ToolbarComponent extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              Material-UI
+              GURU - REACT
             </Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -194,7 +194,7 @@ class ToolbarComponent extends React.Component {
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
-                  input: classes.inputInput
+                  input: classes.inputInput,
                 }}
                 inputProps={{ "aria-label": "search" }}
               />

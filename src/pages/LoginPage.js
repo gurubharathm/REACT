@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router";
 import logo from "../logo.svg";
+import { TextField, Button, Stack } from "@mui/material";
+import { FormControl } from "@material-ui/core";
+
 const LoginPage = () => {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
@@ -57,33 +60,51 @@ const LoginPage = () => {
 
   // JSX code for login form
   const renderForm = (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <input type="text" value="admin" name="uname" required />
+    <form className="form form-login" onSubmit={handleSubmit}>
+      <Stack direction="column" spacing={2}>
+        <FormControl>
+          <TextField
+            required
+            id="outlined-required"
+            label="Username"
+            name="uname"
+            defaultValue="admin"
+            size="small"
+            variant="filled"
+          />
           {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <input type="password" value="admin" name="pass" required />
+        </FormControl>
+        <FormControl>
+          <TextField
+            required
+            id="outlined-required"
+            label="Password"
+            name="pass"
+            defaultValue="admin"
+            size="small"
+            variant="filled"
+            type="password"
+          />
           {renderErrorMessage("pass")}
-        </div>
-        <div className="button-container">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
+        </FormControl>
+        <FormControl>
+          <Button variant="contained" size="medium" type="submit">
+            Login
+          </Button>
+        </FormControl>
+      </Stack>
+    </form>
   );
 
   return (
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1>Login</h1>
-      <div className="form">
+    <>
+      <div class="background"></div>
+      <div className="login">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Login</h1>
         {isSubmitted ? <Navigate to="/dashboard" /> : renderForm}
       </div>
-    </header>
+    </>
   );
 };
 

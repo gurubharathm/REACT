@@ -1,11 +1,14 @@
 import React from "react";
 import Navbar from "../components/navbar";
 
-
 const DashboardPage = () => {
   return (
     <>
-      <Navbar /> <h1> Dashboard </h1>{" "}
+      <Navbar />      
+      <section className="body">
+d
+
+      </section>
     </>
   );
 };

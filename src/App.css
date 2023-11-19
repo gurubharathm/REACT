@@ -1,9 +1,6 @@
-.App {
-  text-align: center;
-}
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -36,3 +33,19 @@
     transform: rotate(360deg);
   }
 }
+
+.background {
+  position: absolute;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  color: rgb(52, 71, 103);
+  box-shadow: none;
+  background: linear-gradient(195deg, rgba(66, 66, 74, 0.6), rgba(25, 25, 25, 0.6)) center center / cover no-repeat, url(/public/bg-signin.jpeg) transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.login{z-index: 1;position: relative; padding-top:100px;color:white ;text-align: center;}
+.login *, .login label, .login input{border-color:white !important;color:white;}
+.form-login{max-width: 300px;width:94%; margin: 0 auto;}
+.body{padding: 20px;}
