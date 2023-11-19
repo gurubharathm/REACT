@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
-import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
+
 
 const Dashboard = () => {
   return (

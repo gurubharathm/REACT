@@ -15,12 +15,12 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route index element={<Login />} />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="about" element={<About />} />
-          <Route path="users" element={<Users />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
-      </BrowserRouter>{" "}
+      </BrowserRouter>
     </>
   );
 }
