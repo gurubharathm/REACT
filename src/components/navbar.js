@@ -4,7 +4,7 @@ import DrawerComponent from "./drawer";
 
 class Navbar extends React.Component {
   state = {
-    left: false
+    left: false,
   };
 
   toggleDrawer = () => {
@@ -13,13 +13,13 @@ class Navbar extends React.Component {
     // }
 
     this.setState({
-      left: false
+      left: false,
     });
   };
 
   openDrawer = () => {
     this.setState({
-      left: true
+      left: true,
     });
   };
 
@@ -28,8 +28,8 @@ class Navbar extends React.Component {
       <div className="App">
         <ToolbarComponent openDrawerHandler={this.openDrawer} />
         <DrawerComponent
-        left={this.state.left}
-        toggleDrawerHandler={this.toggleDrawer}
+          left={this.state.left}
+          toggleDrawerHandler={this.toggleDrawer}
         />
       </div>
     );
