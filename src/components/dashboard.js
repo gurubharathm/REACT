@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from '../components/navbar';
-import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
+import Navbar from "../components/navbar";
+import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
 
 const Dashboard = () => {
   return (
     <>
-    <Navbar /> <h1> Dashboard </h1> < />
+      <Navbar /> <h1> Dashboard </h1>{" "}
+    </>
   );
 };
 export default Dashboard;
