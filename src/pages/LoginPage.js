@@ -1,45 +1,36 @@
-import React, {
-  useState
-} from "react";
-import {
-  Navigate
-} from 'react-router';
-import logo from '../logo.svg';
-const Login = () => {
+import React, { useState } from "react";
+import { Navigate } from "react-router";
+import logo from "../logo.svg";
+const LoginPage = () => {
   // React States
-  const [errorMessages,
-    setErrorMessages] = useState({});
-  const [isSubmitted,
-    setIsSubmitted] = useState(false);
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
   // User Login info
-  const database = [{
-    username: "user1",
-    password: "pass1"
-  },
+  const database = [
+    {
+      username: "user1",
+      password: "pass1",
+    },
     {
       username: "admin",
-      password: "admin"
-    }];
+      password: "admin",
+    },
+  ];
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
-  name === errorMessages.name && (
-    <div className="error">
-      {errorMessages.message}
-    </div>
-  );
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    var {
-      uname,
-      pass
-    } = document.forms[0];
+    var { uname, pass } = document.forms[0];
 
     // Find user login info
     const userData = database.find((user) => user.username === uname.value);
@@ -49,16 +40,17 @@ const Login = () => {
       if (userData.password !== pass.value) {
         // Invalid password
         setErrorMessages({
-          name: "pass", message: errors.pass
+          name: "pass",
+          message: errors.pass,
         });
       } else {
         setIsSubmitted(true);
-
       }
     } else {
       // Username not found
       setErrorMessages({
-        name: "uname", message: errors.uname
+        name: "uname",
+        message: errors.uname,
       });
     }
   };
@@ -71,34 +63,28 @@ const Login = () => {
           <label>Username </label>
           <input type="text" value="admin" name="uname" required />
           {renderErrorMessage("uname")}
-    </div>
-    <div className="input-container">
-      <label>Password </label>
+        </div>
+        <div className="input-container">
+          <label>Password </label>
           <input type="password" value="admin" name="pass" required />
           {renderErrorMessage("pass")}
-    </div>
+        </div>
         <div className="button-container">
           <input type="submit" />
-  </div>
-</form>
-</div>
-);
+        </div>
+      </form>
+    </div>
+  );
 
-
-
-return (
-
-
-<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+  return (
+    <header className="App-header">
+      <img src={logo} className="App-logo" alt="logo" />
       <h1>Login</h1>
-        <div className="form">
-     {isSubmitted ? <Navigate to="/dashboard" />: renderForm}
-</div>
-</header>
-
-);
+      <div className="form">
+        {isSubmitted ? <Navigate to="/dashboard" /> : renderForm}
+      </div>
+    </header>
+  );
 };
 
-
-export default Login;
+export default LoginPage;
