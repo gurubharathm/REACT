@@ -33,7 +33,7 @@
     transform: rotate(360deg);
   }
 }
-
+html{background:#eee;}
 .background {
   position: absolute;
   width: 100%;
@@ -49,3 +49,7 @@
 .login *, .login label, .login input{border-color:white !important;color:white;}
 .form-login{max-width: 300px;width:94%; margin: 0 auto;}
 .body{padding: 20px;}
+.bg-box{background:#fff;}
+
+/*Bootstrap*/
+.py-2{padding:20px 0px;}

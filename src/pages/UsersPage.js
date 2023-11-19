@@ -58,21 +58,23 @@ const UsersPage = () => {
   return (
     <>
       <Navbar />
-      <h1>Users</h1>
-      
-      <div style={{ width: "100%" }}>
+      <section className="body">
+        <h1>Users</h1>
+
         <DataGrid
+          className="bg-box"
           rows={users}
           columns={columns}
+          pageSizeOptions={[5, 10]}
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 10 },
             },
           }}
-          pageSizeOptions={[5, 10]}
           checkboxSelection
         />
-      </div>
+      </section>
+
       {/*
       <table style={{ display: "none" }}>
         <tr>

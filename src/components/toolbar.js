@@ -14,6 +14,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import {Navigate} from "react-router-dom";
 
 const styles = (theme) => ({
   grow: {
@@ -84,6 +85,7 @@ class ToolbarComponent extends React.Component {
   };
 
   handleProfileMenuOpen = (event) => {
+    return <Navigate to='/profile' replace={true} />;
     this.setState({
       achorEl: event.currentTarget,
     });
@@ -156,7 +158,7 @@ class ToolbarComponent extends React.Component {
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
+        <MenuItem onClick={<Navigate to='/profile' replace={true} />}>
           <IconButton
             aria-label="account of current user"
             aria-controls="primary-search-account-menu"

@@ -79,6 +79,14 @@ class DrawerComponent extends React.Component {
         </List>
         <Divider />
         <List>
+        <Link to="/profile">
+            <ListItem>
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </Link>
           {["Logout"].map((text, index) => (
             <Link to={"/" + text.toString().toLowerCase()}>
               <ListItem button key={text}>
