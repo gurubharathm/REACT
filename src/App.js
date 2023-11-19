@@ -11,7 +11,6 @@ import ProfilePage from "./pages/ProfilePage";
 // PUBLIC PAGES
 import AboutPage from "./pages/AboutPage";
 
-
 function App() {
   return (
     <>
