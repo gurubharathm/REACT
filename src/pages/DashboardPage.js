@@ -17,6 +17,7 @@ const DashboardPage = () => {
           spacing={2}
           direction={{ xs: "column", md: "row" }}
           alignItems="baseline"
+          style={{marginTop:10, marginBottom:10}}
         >
          
           <PieChartComponent />
