@@ -10,7 +10,7 @@ const chartSetting = {
       label: 'rainfall (mm)',
     },
   ],
-  width: 500,
+ // width: 500,
   height: 300,
   sx: {
     [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -39,6 +39,7 @@ export default function BarsDatasetComponent() {
 
 
   return (
+        <div class="bg-box" style={{width:"100%"}}>
     <BarChart
       dataset={dataset}
       xAxis={[{ scaleType: 'band', dataKey: 'month' }]}
@@ -50,5 +51,6 @@ export default function BarsDatasetComponent() {
       ]}
       {...chartSetting}
     />
+    </div>
   );
 }

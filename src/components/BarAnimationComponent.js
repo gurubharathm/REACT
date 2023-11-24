@@ -25,6 +25,7 @@ export default function BarAnimationComponenet() {
   };
 
   return (
+    <div class="bg-box" style={{width:"100%"}}>
     <Box sx={{ width: '100%' }}>
       <BarChart
         height={300}
@@ -64,6 +65,7 @@ export default function BarAnimationComponenet() {
         aria-labelledby="input-series-number"
       />
     </Box>
+    </div>
   );
 }
 

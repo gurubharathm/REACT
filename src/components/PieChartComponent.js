@@ -10,12 +10,14 @@ const data = [
   ];
   
   const size = {
-    width: 400,
+   // width: 360,
     height: 200,
+    maxWidth:100
   };
   
   export default function PieChartComponent() {
     return (
+      <div style={{width:"100%"}}>
       <Box className="bg-box py-2">
         <PieChart 
         series={[
@@ -34,6 +36,7 @@ const data = [
         {...size}
       />
       </Box>
+      </div>
     );
   }
   

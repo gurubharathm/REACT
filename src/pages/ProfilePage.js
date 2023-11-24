@@ -49,12 +49,12 @@ export default function ProfilePage() {
         <h1>Profile</h1>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={0} sx={{margin:0}}>
-            <Grid xs={3}>
+            <Grid xs={12} sm={3}>
               <ProfileCardComponent />
               <Box margin={2} />
               <ProfileLinksComponent />
             </Grid>
-            <Grid xs={9}>
+            <Grid xs={12} sm={9}>
               <CustomizedAccordions></CustomizedAccordions>
             </Grid>
           </Grid>
