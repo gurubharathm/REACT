@@ -12,13 +12,12 @@ const DashboardPage = () => {
     <>
       <Navbar />
       <section className="body">
-      <DashboardCardsComponent />
+        <DashboardCardsComponent />
         <Stack
           spacing={2}
           direction={{ xs: "column", md: "row" }}
           alignItems="baseline"
         >
-         
           <PieChartComponent />
           <BarsDatasetComponent />
         </Stack>

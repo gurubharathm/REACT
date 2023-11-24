@@ -2,10 +2,9 @@ import React from "react";
 import axios from "axios";
 import Navbar from "../components/navbar";
 import Avatar from "@mui/material/Avatar";
-
 import { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-const baseURL = "https://dummyjson.com/users";
+const baseURL = "/data/users.json";
 
 const UsersPage = () => {
   const columns = [
