@@ -1,14 +1,16 @@
+import {Layout} from "../common/_Layout";
+import Paper from "@mui/material/Paper";
 import React from "react";
 import axios from "axios";
-import Navbar from "../components/navbar";
 import Avatar from "@mui/material/Avatar";
 import { useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGridCommon } from "../common/DataGridCommon";
 const baseURL = "/data/users.json";
 
 const UsersPage = () => {
+  const [error, setError] = useState(null);
   const columns = [
-    { field: "id", headerName: "ID", width: 50 },
+    { field: "id", headerName: "ID", width: 70 },
     {
       field: "image",
       headerName: "Image",
@@ -52,34 +54,35 @@ const UsersPage = () => {
   ];
 
   const [users, setUsers] = React.useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   React.useEffect(() => {
     axios.get(baseURL).then((response) => {
-      setLoading(false);
+      setLoaded(true);
       setUsers(response.data.users);
+    },
+    (error) => {
+      setLoaded(true);
+      setError(error);
     });
   }, []);
 
   if (!users) return null;
   return (
-    <>
-      <Navbar />
-      <section className="body">
-        <h1>Users</h1>
 
-        <DataGrid
-          className="bg-box"
-          rows={users}
-          columns={columns}
-          pageSizeOptions={[5, 10]}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 10 },
-            },
-          }}
-          checkboxSelection
-        />
-      </section>
+    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+      <Layout
+        children={
+          error ? (
+            <h1>Error occured...</h1>
+          ) : loaded ? (<>
+            <h1>Users</h1>
+            <DataGridCommon  rows={users} columns={columns} />
+            </>
+          ) : (
+            <SkeletonLoader />
+          )
+        }
+      />
 
       {/*
       <table style={{ display: "none" }}>
@@ -101,7 +104,25 @@ const UsersPage = () => {
         ))}
       </table>
        */}
-    </>
+  
+    </Paper>
   );
 };
 export default UsersPage;
+
+function SkeletonLoader() {
+  const columns = Array.from({ length: 9 }, (_, index) => ({
+    field: `column${index + 1}`,
+    headerName: ``,
+    width: 200,
+  }));
+
+  const rows = Array.from({ length: 20 }, (_, index) => ({
+    id: index,
+    ...Object.fromEntries(
+      columns.map((column) => {
+        return [column.field, ""];
+      })
+    ),
+  }));
+}

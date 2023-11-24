@@ -1,20 +1,21 @@
 {
     "cards": [
         {
-            "head":"300+",
-            "desc":"users"
+            "head":"200+",
+            "desc":"Articles",
+            "icon":""
         },
         {
-            "head":"600+",
-            "desc":"users"
+            "head":"15+",
+            "desc":"Tools"
         },
         {
-            "head":"900+",
-            "desc":"users"
+            "head":"10+",
+            "desc":"Writers"
         },
         {
-            "head":"100+",
-            "desc":"users"
+            "head":"1M +",
+            "desc":"Visits"
         }
     ]
 }
