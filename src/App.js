@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/react" element={<LoginPage />} />
           <Route index element={<LoginPage />} />
           <Route path="/logout" element={<LoginPage />} />
-          <Route path="react/dashboard" element={<DashboardPage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/users" element={<UsersPage />} />
           <Route path="/settings" element={<SettingsPage />} />
