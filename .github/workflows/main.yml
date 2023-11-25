@@ -1,4 +1,4 @@
-name: Deploy RREACT Private GitHub repository to cPanel
+name: Deploy Private GitHub repository to cPanel
 on:
   push:
     branches:
@@ -8,13 +8,12 @@ jobs:
     name: FTP-Deploy-Action
     runs-on: ubuntu-latest
     steps:
-    - name: Get Latest Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v2.1.0
       with:
         fetch-depth: 2
-    - name: Sync files
-      uses: gurubharathm/REACT
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }} 
+        password: ${{ secrets.FTP_PASSWORD }}
