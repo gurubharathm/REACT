@@ -12,27 +12,28 @@ import {
   Button,
   Select,
   MenuItem,
-  InputLabel
+  InputLabel,
 } from "@material-ui/core";
 import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 
-import FormLabel from '@mui/material/FormLabel';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import Switch from '@mui/material/Switch';
-
+import FormLabel from "@mui/material/FormLabel";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Switch from "@mui/material/Switch";
+import { Layout } from "../common/_Layout";
 
 const SettingsPage = () => {
   return (
-    <>
-      <Navbar />
-      <section className="body">
-        <h1> Settings </h1>
-        <CustomizedAccordions></CustomizedAccordions>
-      </section>
-    </>
+    <Layout
+      body={
+        <>
+          <h1> Settings </h1>
+          <CustomizedAccordions></CustomizedAccordions>
+        </>
+      }
+    ></Layout>
   );
 };
 export default SettingsPage;
@@ -82,7 +83,6 @@ export function CustomizedAccordions() {
 
   return (
     <div>
-        
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -113,7 +113,7 @@ export function CustomizedAccordions() {
               />
             </Box>
             <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+              <InputLabel id="demo-simple-select-label">Age</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -169,13 +169,12 @@ export function CustomizedAccordions() {
             dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada
             lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
-          <SwitchesGroupComponent/>
+          <SwitchesGroupComponent />
         </AccordionDetails>
       </Accordion>
     </div>
   );
 }
-
 
 export function SwitchesGroupComponent() {
   const [state, setState] = React.useState({
@@ -197,25 +196,41 @@ export function SwitchesGroupComponent() {
       <FormGroup>
         <FormControlLabel
           control={
-            <Switch checked={state.gilad} onChange={handleChange} name="gilad" />
+            <Switch
+              checked={state.gilad}
+              onChange={handleChange}
+              name="gilad"
+            />
           }
           label="Google Adds"
         />
         <FormControlLabel
           control={
-            <Switch checked={state.jason} onChange={handleChange} name="jason" />
+            <Switch
+              checked={state.jason}
+              onChange={handleChange}
+              name="jason"
+            />
           }
           label="Google Analytics"
         />
         <FormControlLabel
           control={
-            <Switch checked={state.antoine} onChange={handleChange} name="antoine" />
+            <Switch
+              checked={state.antoine}
+              onChange={handleChange}
+              name="antoine"
+            />
           }
           label="HTML Cache"
         />
         <FormControlLabel
           control={
-            <Switch checked={state.antoine} onChange={handleChange} name="antoine" />
+            <Switch
+              checked={state.antoine}
+              onChange={handleChange}
+              name="antoine"
+            />
           }
           label="Logging"
         />

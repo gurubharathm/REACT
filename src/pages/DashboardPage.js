@@ -6,27 +6,29 @@ import BarsDatasetComponent from "../components/BarsDatasetComponent";
 import PieChartComponent from "../components/PieChartComponent";
 import DashboardCardsComponent from "../components/DashboardCardsComponent";
 import profile from "../images/profile.jpg";
+import { Layout } from "../common/_Layout";
 
 const DashboardPage = () => {
   return (
-    <>
-      <Navbar />
-      <section className="body">
-        <DashboardCardsComponent />
-        <Stack
-          spacing={2}
-          direction={{ xs: "column", md: "row" }}
-          alignItems="baseline"
-          style={{marginTop:10, marginBottom:10}}
-        >
-          <PieChartComponent />
-          <BarsDatasetComponent />
-        </Stack>
-        <Stack>
-          <BarAnimationComponent />
-        </Stack>
-      </section>
-    </>
+    <Layout
+      body={
+        <>
+          <DashboardCardsComponent />
+          <Stack
+            spacing={2}
+            direction={{ xs: "column", md: "row" }}
+            alignItems="baseline"
+            style={{ marginTop: 10, marginBottom: 10 }}
+          >
+            <PieChartComponent />
+            <BarsDatasetComponent />
+          </Stack>
+          <Stack>
+            <BarAnimationComponent />
+          </Stack>
+        </>
+      }
+    />
   );
 };
 export default DashboardPage;

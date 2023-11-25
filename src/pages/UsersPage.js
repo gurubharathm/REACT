@@ -1,4 +1,4 @@
-import {Layout} from "../common/_Layout";
+import { Layout } from "../common/_Layout";
 import Paper from "@mui/material/Paper";
 import React from "react";
 import axios from "axios";
@@ -43,69 +43,49 @@ const UsersPage = () => {
       headerName: "Age",
       //type: 'number',
       width: 100,
-    },    
+    },
     { field: "phone", headerName: "Phone", width: 150 },
     { field: "email", headerName: "Email", width: 150 },
     { field: "ip", headerName: "IP", width: 150 },
-    { field: "address", headerName: "Address", width:200,
-    valueGetter: (params) =>
-        `${params.row.address.address || ""}`,
-  },
+    {
+      field: "address",
+      headerName: "Address",
+      width: 200,
+      valueGetter: (params) => `${params.row.address.address || ""}`,
+    },
   ];
 
   const [users, setUsers] = React.useState(null);
   const [loaded, setLoaded] = useState(false);
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      setLoaded(true);
-      setUsers(response.data.users);
-    },
-    (error) => {
-      setLoaded(true);
-      setError(error);
-    });
+    axios.get(baseURL).then(
+      (response) => {
+        setLoaded(true);
+        setUsers(response.data.users);
+      },
+      (error) => {
+        setLoaded(true);
+        setError(error);
+      }
+    );
   }, []);
 
   if (!users) return null;
   return (
-
-    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-      <Layout
-        children={
-          error ? (
-            <h1>Error occured...</h1>
-          ) : loaded ? (<>
+    <Layout
+      body={
+        error ? (
+          <h1>Error occured...</h1>
+        ) : loaded ? (
+          <>
             <h1>Users</h1>
-            <DataGridCommon  rows={users} columns={columns} />
-            </>
-          ) : (
-            <SkeletonLoader />
-          )
-        }
-      />
-
-      {/*
-      <table style={{ display: "none" }}>
-        <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Firstname</th>
-          <th>Email</th>
-          <th>Phone</th>
-        </tr>
-        {users.map((user) => (
-          <tr key={user.id}>
-            <td>{user.id}</td>
-            <td>{user.username}</td>
-            <td>{user.firstName}</td>
-            <td>{user.email}</td>
-            <td>{user.phone}</td>
-          </tr>
-        ))}
-      </table>
-       */}
-  
-    </Paper>
+            <DataGridCommon rows={users} columns={columns} />
+          </>
+        ) : (
+          <SkeletonLoader />
+        )
+      }
+    />
   );
 };
 export default UsersPage;

@@ -32,6 +32,7 @@ import ProfileBasicsComponent from "../components/ProfileBasicsComponent";
 import ProfileAddressComponent from "../components/ProfileAddressComponent";
 import ProfileCardComponent from "../components/ProfileCardComponent";
 import Paper from "@material-ui/core/Paper";
+import { Layout } from "../common/_Layout";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -43,8 +44,7 @@ const Item = styled(Paper)(({ theme }) => ({
   
 export default function ProfilePage() {
   return (
-    <>
-      <Navbar />
+    <Layout body={
       <section className="body">
         <h1>Profile</h1>
         <Box sx={{ flexGrow: 1 }}>
@@ -60,7 +60,7 @@ export default function ProfilePage() {
           </Grid>
         </Box>
       </section>
-    </>
+    } />
   );
 }
 
