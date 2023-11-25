@@ -1,4 +1,4 @@
-name: Deploy Private GitHub repository to cPanel
+name: Deploy RREACT Private GitHub repository to cPanel
 on:
   push:
     branches:
@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 2
-    - name: FTP-Deploy-Action
+    - name: Sync files
       uses: ./
       with:
         server: ${{ secrets.FTP_SERVER }}
