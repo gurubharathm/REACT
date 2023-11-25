@@ -42,7 +42,7 @@ const DashboardPage = () => {
 export default DashboardPage;
 
 function BoxCards() {
-  const baseURL = "/data/cards.json";
+  const baseURL = "../data/test.json";
   const [data, setData] = React.useState([]);
   const [loader, setLoader] = useState(true);
 
