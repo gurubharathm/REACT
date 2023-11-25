@@ -2,7 +2,7 @@ name: Deploy Private GitHub repository to cPanel
 on:
   push:
     branches:
-      - main
+      - gh-pages
 jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
@@ -12,7 +12,7 @@ jobs:
       with:
         fetch-depth: 2
     - name: FTP-Deploy-Action
-      uses: gurubharathm/REACT
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
