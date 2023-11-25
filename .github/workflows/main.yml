@@ -13,7 +13,7 @@ jobs:
       with:
         fetch-depth: 2
     - name: Sync files
-      uses: ./
+      uses: gurubharathm/REACT
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
