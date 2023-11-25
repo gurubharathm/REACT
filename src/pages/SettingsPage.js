@@ -1,4 +1,3 @@
-import Navbar from "../components/navbar";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
@@ -25,6 +24,7 @@ import Switch from "@mui/material/Switch";
 import { Layout } from "../common/_Layout";
 
 const SettingsPage = () => {
+
   return (
     <Layout
       body={

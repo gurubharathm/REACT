@@ -9,10 +9,10 @@ import { IconOL } from "../common/_IconOL";
 
 import axios from "axios";
 import { useState } from "react";
-const baseURL = "/data/links.json";
+const baseURL = "/data/media.json";
 
 export default function ProfileCardComponent() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   React.useEffect(() => {
@@ -34,9 +34,9 @@ export default function ProfileCardComponent() {
         {data.map((x) => (
           <ListItem>
             <ListItemIcon style={{ maxWidth: "60px" }}>
-              <IconOL name={x.icon} />
+              <IconOL name="Facebook" />
             </ListItemIcon>
-            <ListItemText primary={x.name} />
+            <ListItemText primary="OmniGuruIndia" />
           </ListItem>
         ))}
       </List>

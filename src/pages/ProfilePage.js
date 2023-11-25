@@ -1,4 +1,3 @@
-import Navbar from "../components/navbar";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";

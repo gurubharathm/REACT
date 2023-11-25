@@ -3,19 +3,22 @@
         {
             "head":"200+",
             "desc":"Articles",
-            "icon":""
+            "icon":"People"
         },
         {
             "head":"15+",
-            "desc":"Tools"
+            "desc":"Tools",
+            "icon":"People"
         },
         {
             "head":"10+",
-            "desc":"Writers"
+            "desc":"Writers",
+            "icon":"People"
         },
         {
             "head":"1M +",
-            "desc":"Visits"
+            "desc":"Visits",
+            "icon":"People"
         }
     ]
 }

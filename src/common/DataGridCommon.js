@@ -5,9 +5,10 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 export function DataGridCommon(props) {
   const { columns, rows } = props;
   return (
-    <Box className="bg-box" sx={{ }}>
+    <Box className="bg-box" sx={{}}>
       <DataGrid
-       //slots={{toolbar: GridToolbarComponent}}
+        //slots={{toolbar: GridToolbarComponent}}
+        //loading={loader}
         rows={rows}
         columns={columns}
         pageSizeOptions={[5, 10]}

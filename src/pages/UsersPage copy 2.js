@@ -24,15 +24,17 @@ const SectionTable = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loader, setLoader] = useState(true);
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const sleep = ms =>  new Promise(resolve => setTimeout(resolve, ms));
 
   React.useEffect(() => {
     axios.get(baseURL).then(
       (response) => {
+
         sleep(2000).then(() => {
           setData(response.data.users);
           setLoader(false);
         });
+        
       },
       (error) => {
         setError(error);
@@ -96,19 +98,17 @@ const columns1 = [];
 caller();
 function caller() {
   console.log(columns);
-  const renderCell = (params) => {
-    return (
-      <>
-        <Skeleton
+const renderCell =     (params) => {
+  return (<>
+         <Skeleton
           variant="text"
           animation="wave"
-          sx={{ fontSize: "1rem", width: "100%" }}
-        />
-      </>
-    );
-  };
+          sx={{ fontSize: "1rem", width: "100%" }}/>
+  </>);
+};
   for (var i = 0; i < columns.length; i++) {
-    var obj = {};
+    var obj = {}; // <---- Move declaration inside loop
+
     obj["field"] = columns[i]["field"];
     obj["headerName"] = columns[i]["headerName"];
     obj["width"] = columns[i]["width"];
@@ -119,7 +119,7 @@ function caller() {
 }
 
 function SkeletonLoader() {
-  const rows = Array.from({ length: 10 }, (_, index) => ({
+  const rows = Array.from({ length: 20 }, (_, index) => ({
     id: index,
     ...Object.fromEntries(
       columns1.map((column) => {
