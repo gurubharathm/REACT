@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/guru-react/static/css/main.28a1a12b.css",
-    "main.js": "/guru-react/static/js/main.f8989d44.js",
-    "static/js/787.7e395b97.chunk.js": "/guru-react/static/js/787.7e395b97.chunk.js",
-    "static/media/logo.svg": "/guru-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/guru-react/index.html",
-    "main.28a1a12b.css.map": "/guru-react/static/css/main.28a1a12b.css.map",
-    "main.f8989d44.js.map": "/guru-react/static/js/main.f8989d44.js.map",
-    "787.7e395b97.chunk.js.map": "/guru-react/static/js/787.7e395b97.chunk.js.map"
+    "main.css": "/static/css/main.0b45e75d.css",
+    "main.js": "/static/js/main.8d3939b0.js",
+    "static/js/787.7e395b97.chunk.js": "/static/js/787.7e395b97.chunk.js",
+    "static/media/bg-signin.jpeg": "/static/media/bg-signin.9d4bb0cf88ced6258359.jpeg",
+    "static/media/profile.jpg": "/static/media/profile.228aab793ba1399107e1.jpg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.0b45e75d.css.map": "/static/css/main.0b45e75d.css.map",
+    "main.8d3939b0.js.map": "/static/js/main.8d3939b0.js.map",
+    "787.7e395b97.chunk.js.map": "/static/js/787.7e395b97.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.28a1a12b.css",
-    "static/js/main.f8989d44.js"
+    "static/css/main.0b45e75d.css",
+    "static/js/main.8d3939b0.js"
   ]
 }

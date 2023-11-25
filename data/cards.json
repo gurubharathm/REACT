@@ -1,0 +1,24 @@
+{
+    "cards": [
+        {
+            "head":"200+",
+            "desc":"Articles",
+            "icon":"People"
+        },
+        {
+            "head":"15+",
+            "desc":"Tools",
+            "icon":"People"
+        },
+        {
+            "head":"10+",
+            "desc":"Writers",
+            "icon":"People"
+        },
+        {
+            "head":"1M +",
+            "desc":"Visits",
+            "icon":"People"
+        }
+    ]
+}
