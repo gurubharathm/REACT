@@ -6,7 +6,8 @@ import Avatar from "@mui/material/Avatar";
 import { DataGridCommon } from "../common/DataGridCommon";
 
 import Skeleton from "@mui/material/Skeleton";
-const baseURL = "/data/users.json";
+const baseURL = "https://api.omniguru.in/query";
+const body = "SELECT *,U.Id from User U left join UserData UD on U.Id = UD.UserId left join UserAddress UA ON U.Id = UA.UserId";
 export default function UsersPage() {
   return (
     <Layout
@@ -26,13 +27,14 @@ const SectionTable = () => {
   const [loader, setLoader] = useState(true);
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+
   React.useEffect(() => {
-    axios.get(baseURL).then(
+    axios.post(baseURL, body).then(
       (response) => {
-        sleep(2000).then(() => {
-          setData(response.data.users);
+  
+          console.log(response.data.dats);
+          setData(response.data.data);
           setLoader(false);
-        });
       },
       (error) => {
         setError(error);
@@ -51,12 +53,10 @@ const SectionTable = () => {
 };
 
 const columns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "Id", headerName: "ID", width: 70 },
   {
-    field: "image",
-    headerName: "Image",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
+    field: "Picture",
+    headerName: "DP",
     width: 80,
     //valueGetter: (params) =>`<img src="{${params.row.image}"/>}`,
     renderCell: (params) => {
@@ -68,28 +68,41 @@ const columns = [
       );
     },
   },
-  { field: "username", headerName: "Username", width: 150 },
+  { field: "Username", headerName: "Username" },
   {
     field: "firstName",
     headerName: "Full Name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    //type: 'number',
-    width: 160,
     valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      `${params.row.FirstName || ""} ${params.row.LastName || ""}`,
   },
-  { field: "birthDate", headerName: "DOB", width: 100 },
-  { field: "age", headerName: "Age", width: 100 },
-  { field: "phone", headerName: "Phone", width: 150 },
-  { field: "email", headerName: "Email", width: 150 },
-  { field: "ip", headerName: "IP", width: 150 },
+  { field: "Gender", headerName: "Gender"},
+  { field: "Email", headerName: "Email" },
+  // { field: "birthDate", headerName: "DOB", width: 100 },
+  // { field: "age", headerName: "Age", width: 100 },
+ { field: "Mobile", headerName: "Mobile"},
   {
     field: "address",
     headerName: "Address",
-    width: 200,
-    valueGetter: (params) => `${params.row.address.address || ""}`,
+    valueGetter: (params) => `${params.row.AddressLine1 || ""}, ${params.row.AddressLine2 || ""}`,
   },
+  { field: "Landmark", headerName: "Landmark" },
+  { field: "Location", headerName: "Location" },
+  { field: "City", headerName: "City" },
+  { field: "PinCode", headerName: "PinCode" },
+  { field: "State", headerName: "State"},
+  { field: "Country", headerName: "Country"},
+
+  // { field: "ip", headerName: "IP", width: 150 },
+  // {
+  //   field: "address",
+  //   headerName: "Address",
+  //   width: 200,
+      //sortable: false,
+    //type: 'number',
+    
+   // description: "This column has a value getter and is not sortable.",
+  //   valueGetter: (params) => `${params.row.address.address || ""}`,
+  // },
 ];
 const columns1 = [];
 
@@ -110,16 +123,16 @@ function caller() {
   for (var i = 0; i < columns.length; i++) {
     var obj = {};
     obj["field"] = columns[i]["field"];
-    obj["headerName"] = columns[i]["headerName"];
+   // obj["headerName"] = columns[i]["headerName"];
     obj["width"] = columns[i]["width"];
-    obj["renderCell"] = renderCell;
+    //obj["renderCell"] = renderCell;
     columns1.push(obj);
   }
   console.log(columns1);
 }
 
 function SkeletonLoader() {
-  const rows = Array.from({ length: 10 }, (_, index) => ({
+  const rows = Array.from({ length: 1 }, (_, index) => ({
     id: index,
     ...Object.fromEntries(
       columns1.map((column) => {

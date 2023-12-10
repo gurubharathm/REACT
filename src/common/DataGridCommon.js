@@ -5,8 +5,10 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 export function DataGridCommon(props) {
   const { columns, rows } = props;
   return (
-    <Box className="bg-box" sx={{}}>
-      <DataGrid
+    <Box className="bg-box" >
+      <div style={{ width: '100%' }}>
+      <DataGrid 
+      getRowId={(row)=> row.Id}
         //slots={{toolbar: GridToolbarComponent}}
         //loading={loader}
         rows={rows}
@@ -15,7 +17,7 @@ export function DataGridCommon(props) {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 10,
+              pageSize: 5,
             },
           },
         }}
@@ -23,6 +25,7 @@ export function DataGridCommon(props) {
         //disableColumnMenu
         //checkboxSelection
       />
+      </div>
     </Box>
   );
 }

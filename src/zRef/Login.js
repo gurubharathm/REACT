@@ -3,52 +3,59 @@ import { Navigate } from "react-router";
 import logo from "../logo.svg";
 import { TextField, Button, Stack } from "@mui/material";
 import { FormControl } from "@material-ui/core";
-import axios from "axios";
-import { useAuth } from "../common/AuthContext";
-const baseURL = "https://api.omniguru.in/query";
 
 const LoginPage = () => {
-  //const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState();
-  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  // React States
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  // User Login info
+  const database = [
+    {
+      username: "user1",
+      password: "pass1",
+    },
+    {
+      username: "admin",
+      password: "admin",
+    },
+  ];
 
+  const errors = {
+    uname: "invalid username",
+    pass: "invalid password",
+  };
+  // Generate JSX code for error message
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
   const handleSubmit = (event) => {
-    event.preventDefault(); //Prevent page reload
+    //Prevent page reload
+    event.preventDefault();
 
     var { uname, pass } = document.forms[0];
 
-    const body =
-      "select * from User where Username = '" +
-      uname.value +
-      "' and Password = '" +
-      pass.value +
-      "'";
-    console.log(body);
-    axios.post(baseURL, body).then(
-      (response) => {
-        if (
-          response.data?.data != undefined &&
-          response.data.data.length == 1
-        ) {
-          var u = response.data.data[0];
-          var user = {"Id": u.Id, "Username": u.Username }
-          
-          setAuthUser(user);
-          localStorage.setItem('user', JSON.stringify(user));
-        
-          console.log(JSON.parse(localStorage.getItem('user')).Id);
-          setIsLoggedIn(true);
-        } else {
-          setIsLoggedIn(false);
-          setError("Invalid username & password");
-        }
-      },
-      (error) => {
-        //setLoader(false);
-        setIsLoggedIn(false);
-        setError("Invalid username & password");
+    // Find user login info
+    const userData = database.find((user) => user.username === uname.value);
+
+    // Compare user info
+    if (userData) {
+      if (userData.password !== pass.value) {
+        // Invalid password
+        setErrorMessages({
+          name: "pass",
+          message: errors.pass,
+        });
+      } else {
+        setIsSubmitted(true);
       }
-    );
+    } else {
+      // Username not found
+      setErrorMessages({
+        name: "uname",
+        message: errors.uname,
+      });
+    }
   };
 
   // JSX code for login form
@@ -65,6 +72,7 @@ const LoginPage = () => {
             size="small"
             variant="filled"
           />
+          {renderErrorMessage("uname")}
         </FormControl>
         <FormControl>
           <TextField
@@ -72,18 +80,18 @@ const LoginPage = () => {
             id="outlined-required"
             label="Password"
             name="pass"
-            defaultValue="test1234"
+            defaultValue="admin"
             size="small"
             variant="filled"
             type="password"
           />
+          {renderErrorMessage("pass")}
         </FormControl>
         <FormControl>
           <Button variant="contained" size="medium" type="submit">
             Login
           </Button>
         </FormControl>
-        {error}
       </Stack>
     </form>
   );
@@ -94,7 +102,7 @@ const LoginPage = () => {
       <div className="login">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Login</h1>
-        {isLoggedIn ? <Navigate to="/dashboard" /> : renderForm}
+        {isSubmitted ? <Navigate to="/dashboard" /> : renderForm}
       </div>
     </>
   );

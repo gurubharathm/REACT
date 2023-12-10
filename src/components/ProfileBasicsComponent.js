@@ -1,31 +1,50 @@
-import { Box } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import { Stack } from "@mui/material";
 import { InputLabel, Select, MenuItem } from "@material-ui/core";
-
+import { useAuth } from "../common/AuthContext";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion from "@mui/material/Accordion";
-import MuiAccordionSummary from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import { FormControl, Button, List, ListItem } from "@material-ui/core";
-
+import axios from "axios";
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
 
-import FormLabel from "@mui/material/FormLabel";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormHelperText from "@mui/material/FormHelperText";
-import Switch from "@mui/material/Switch";
-
+import { useEffect } from "react";
 export default function ProfileBasicsComponent() {
   const [state, setState] = React.useState({
     gilad: true,
     jason: false,
     antoine: true,
   });
+  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  const apiUrl = "https://api.omniguru.in/query";
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loaded, setLoaded] = useState(false);
+  
+  var user = JSON.parse(localStorage.getItem("user"));
+  const body = "select * from UserData where UserId='" + user.Id + "'";
+
+  useEffect(() => {
+    
+      axios.post(apiUrl, body).then(
+        (response) => {
+          console.log(body);
+          console.log(response);
+          var ud = response.data.data[0];
+          console.log(ud);
+          setData(ud);
+          setLoaded(true);
+        },
+        (error) => {
+          setLoaded(true);
+          setError(error);
+        }
+      );
+    
+  }, []);
+
+
+
 
   const handleChange = (event) => {
     setState({
@@ -55,6 +74,7 @@ export default function ProfileBasicsComponent() {
           id="outlined-required"
           label="Email"
           name="uname"
+          defaultValue={data.Email}
           size="small"
           fullWidth
         />
@@ -70,6 +90,7 @@ export default function ProfileBasicsComponent() {
           id="outlined-required"
           label="First name"
           name="uname"
+          value={data.FirstName || ''}
           size="small"
           fullWidth
         />
@@ -78,6 +99,7 @@ export default function ProfileBasicsComponent() {
           required
           id="outlined-required"
           label="Last name"
+          value={data.LastName || ''}
           name="uname"
           size="small"
           fullWidth
@@ -104,12 +126,21 @@ export default function ProfileBasicsComponent() {
             id="demo-simple-select"
             label="Gender"
             onChange={handleChange}
+            value={data.Gender || ''}
             fullWidth
           >
-            <MenuItem value={10}>Male</MenuItem>
-            <MenuItem value={20}>Female</MenuItem>
+            <MenuItem value="M">Male</MenuItem>
+            <MenuItem value="F">Female</MenuItem>
           </Select>
         </FormControl>
+      </Stack>
+      <Stack
+        direction="row"
+        spacing={4}
+        sx={{ marginBottom: 3 }}
+        justifyContent="space-around"
+      >
+        <Button fullWidth size="medium" color="primary" variant="contained">Save</Button>
       </Stack>
     </Grid>
   );
